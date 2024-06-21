@@ -1,0 +1,16 @@
+
+input {
+    height: 45px;
+    margin: 10px;
+    background-color: #f3f4f6;
+    width: 320px;
+    padding: 20px;
+    border: gray;
+    font-size: 20px;
+    vertical-align: middle;
+    background-image: url("../../../assets/nav/search-icon.png");
+    background-repeat: no-repeat;
+    background-size: 8%;
+    background-position: 95% center;
+    border-radius: 25px;
+}

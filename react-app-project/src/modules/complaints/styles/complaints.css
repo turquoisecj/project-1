@@ -1,0 +1,259 @@
+.complaints {
+    background-image: linear-gradient(rgb(200, 218, 219) 5px, 30px, rgb(255, 255, 255),rgb(231, 231, 231));
+    height: calc(100% - 54px);
+    width: 81%;
+    display: inline-block;
+}
+
+.complaints-main {
+    width: 95%;
+    margin: 50px auto;
+}
+
+.complaints-main h1 {
+    font-size: 25px;
+    font-family: sans-serif;
+    font-weight: lighter;
+    display: inline-block;
+}
+
+.add-button {
+    width: 15%;
+    display: inline-block;
+    background-color: #3983fc;
+    color: white;
+    font-size: 20px;
+    padding: 10px 15px;
+    border-radius: 25px;
+}
+
+.complaints-main div.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+table {
+    width: 100%;
+    text-align: left;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: rgb(232, 232, 232);
+    width: 15.83%;
+    padding: 10px 0 10px 20px;
+    font-family: sans-serif;
+    color: #323232;
+    border-top: 2px solid rgb(204, 204, 204);
+    border-bottom: 2px solid rgb(204, 204, 204);
+}
+
+td {
+    text-align: left;
+    padding: 17px;
+    font-size: 19px;
+    font-family: sans-serif;
+    border-bottom: 2px solid black;
+}
+
+span.status {
+    padding: 7px;
+    background-color: pink;
+    border-radius: 15px;
+    font-size: 13px;
+    font-weight: bolder;
+    color: darkred;
+}
+
+span.complete {
+    padding: 7px;
+    background-color: lightgreen;
+    border-radius: 15px;
+    font-size: 13px;
+    font-weight: bolder;
+    color: green;
+}
+
+img {
+    width: 50%;
+}
+
+button {
+    background-color: #f6f9f9;
+    border: none;
+    display: inline-block;
+    width: 50%;
+}
+
+.profilePic {
+    border-radius: 50%;
+    width: 35%;
+    vertical-align: middle;
+    border: 2px solid black;
+    margin-right: 5px;
+}
+
+dialog {
+    position: absolute;
+    top: 10%;
+    left: 32%;
+    width: 40%;
+    text-align: left;
+    border-radius: 10px;
+    padding: 30px;
+    border: none;
+}
+
+dialog .dialog-header {
+    font-size: 30px;
+    font-weight: bolder;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+button.close-button {
+    width: 40px;
+    height: 40px;
+    font-size: 25px;
+    border-radius: 50%;
+    vertical-align: middle;
+    background-color: rgb(222, 222, 222);
+    font-family: sans-serif;
+    vertical-align: middle;
+    margin-left: 50%;
+    border: 2px solid grey;
+}
+
+button.close-button:hover {
+    border: 2px solid black;
+}
+
+dialog::backdrop {
+    background-color: rgba(180, 180, 180, 0.562);
+}
+
+dialog .complaint-details p{
+    font-size: 20px;
+    margin: 20px 0;
+    color: rgb(48, 48, 48);
+}
+
+#select-officer, #select-status{
+    width: 100%;
+    font-size: 23px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: rgb(237, 237, 237);
+    border: 3px solid rgb(152, 152, 152);
+}
+
+#select-officer:hover, #select-status:hover {
+    border: 2.5px solid rgb(49, 49, 49);
+}
+
+#select-officer option, #select-status option {
+    font-size: 23px;
+    border: 3px solid rgb(152, 152, 152);
+}
+
+label {
+    font-size: 21px;
+    font-family: sans-serif;
+    color: rgb(48, 48, 48);
+    display: block;
+    margin-bottom: 10px;
+}
+
+.update-button {
+    width: 35%;
+    height: 60px;
+    margin-left: auto;
+    display: block;
+    border-radius: 15px;
+    background-color: #3983fc;
+    font-weight: bolder;
+    color: white;
+    font-size: 20px;
+}
+
+.add-modal {
+    top: 15%;
+    left: 32%;
+    border-radius: 5px;
+}
+
+.add-modal h1 {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.add-modal::backdrop {
+    background-color: rgba(180, 180, 180, 0.562);
+}
+
+.add-modal p {
+    margin-top: 10px;
+    color: rgb(68, 68, 68);
+}
+
+.close-button-add {
+    width: 40px;
+    height: 40px;
+    font-size: 25px;
+    border-radius: 50%;
+    vertical-align: middle;
+    background-color: rgb(222, 222, 222);
+    font-family: sans-serif;
+    vertical-align: middle;
+    margin-left: 60%;
+    border: 2px solid grey;
+}
+
+textarea {
+    width: 100%;
+    margin-top: 5px;
+    border: 2px solid gray;
+    height: 125px;
+    font-size: 20px;
+}
+
+.add-modal button:not(.close-button-add) {
+    font-weight: bolder;
+    width: 15%;
+    font-size: 16px;
+    margin: 15px 0 0 10px;
+    padding: 10px;
+    border-radius: 25px;
+}
+
+.add-modal button.add-current {
+    background-color: rgb(83, 174, 209);
+    color: white;
+}
+
+.add-modal button.cancel-current {
+    background-color: rgb(188, 188, 188);
+    color: black;
+}
+
+.add-modal button.cancel-current:hover {
+    outline: 2px solid black;
+}
+
+.add-modal button.add-current:hover {
+    outline: 2px solid black;
+}
+
+.add-modal .buttons-container {
+    text-align: right;
+}
+
+.close-button-add:hover {
+    border: 2px solid black;
+}
+
+textarea:hover {
+    outline: 2px solid black;
+}

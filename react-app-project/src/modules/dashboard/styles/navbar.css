@@ -1,0 +1,26 @@
+.navbar {
+    height: 65px;
+    width:81%;
+    float: right;
+    text-align: right;
+    display: flex;
+}
+
+.navbar div.user-banner {
+    margin-left: auto;
+}
+
+.user {
+    line-height: 65px;
+    font-size: 21px;
+    font-family: sans-serif;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 50px 0 10px;
+    color: black;
+}
+
+.user-icon {
+    width: 30px;
+    vertical-align: middle;
+}
