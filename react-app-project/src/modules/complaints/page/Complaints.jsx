@@ -1,16 +1,17 @@
 import { Fragment, useReducer, useRef, useState } from "react";
 import "../styles/complaints.css";
-import deleteIcon from "../../../assets/complaints/delete-icon.png";
-import viewIcon from "../../../assets/complaints/view-icon.png";
-import personIcon from "../../../assets/complaints/person-icon.png";
+import { ComplaintsHeader } from "../components/ComplaintsHeader";
+import { ComplaintsTable } from "../components/ComplaintsTable";
+import { EditModal } from "../components/EditModal";
+import { AddModal } from "../components/AddModal";
 
 export function Complaints() {
 
     const dialogEditRef = useRef(null);
     const dialogAddRef = useRef(null);
     const inputComplaintRef = useRef(null);
-    // const statusRef = useRef(null);
-    // const officerRef = useRef(null);
+    const statusRef = useRef(null);
+    const officerRef = useRef(null);
 
     const [complaintId, setComplaintId] = useState(null);
     const [isEmpty, setIsEmpty] = useState(false);
@@ -59,16 +60,16 @@ export function Complaints() {
         setComplaintId(selectedComplaint);
     }
 
-    // function getMap() {
-    //     if(!statusRef.current) {
-    //         statusRef.current = new Map();
-    //     }
-    //     if(!officerRef.current) {
-    //         officerRef.current = new Map();
-    //     }
+    function getMap() {
+        if(!statusRef.current) {
+            statusRef.current = new Map();
+        }
+        if(!officerRef.current) {
+            officerRef.current = new Map();
+        }
 
-    //     return [statusRef.current, officerRef.current];
-    // }
+        return [statusRef.current, officerRef.current];
+    }
 
     //function to close modal
     function handleClose() {
@@ -83,12 +84,12 @@ export function Complaints() {
             case "status": {
             
                 return currentState.map((complaint) => {
-                    return (complaintId === complaint.key ? {...complaint, status: action.value.toUpperCase()} : {...complaint});
+                    return (complaintId === complaint.key ? {...complaint, status: action.value.toUpperCase(), hasChanged:true} : {...complaint});
                 })
             }
             case "officer": {
                 return currentState.map((complaint) => {
-                    return (complaintId === complaint.key ? {...complaint, officer: action.value} : {...complaint});
+                    return (complaintId === complaint.key ? {...complaint, officer: action.value, hasChanged:true} : {...complaint});
                 })
             }
             case "delete": {
@@ -107,12 +108,21 @@ export function Complaints() {
 
     // proceed staged updates to a state that renders the final complaint data
     function handleUpdate() {
-        setComplaints(complaintUpdate);
-        dialogEditRef.current.close();
-        // const mapStatus = getMap()[0];
-        // const nodeStatus = mapStatus.get(statusKey);
-        // nodeStatus.value
+        if(complaintUpdate[complaintId].hasChanged) {
+            setComplaints(complaintUpdate);
+        }else {
+            const mapStatus = getMap()[0];
+            const nodeStatus = mapStatus.get("statusKey");
+            const mapOfficer = getMap()[1];
+            const nodeOfficer = mapOfficer.get("officerKey");
+            
+            setComplaints(complaints.map((complaint) => {
+                return (complaintId === complaint.key ? {...complaint, officer: nodeOfficer.value, status: nodeStatus.value.toUpperCase(), hasChanged:false} : {...complaint});
+            }))
+        }
         inputComplaintRef.current.value = "";
+        dialogEditRef.current.close();
+
     }
 
     // function to handle delete complaint
@@ -153,84 +163,16 @@ export function Complaints() {
     return (
         <div className="complaints">
             <div className="complaints-main">
-                <div className="header">
-                    <h1>Send your Complaints</h1>
-                    <button onClick={handleAddComplaint} className="add-button">Add Complaint</button>
-                </div>
-                <table>
-                    <tr>
-                        <th>OFFICER</th>
-                        <th>COMPLAINT NO</th>
-                        <th>DATE</th>
-                        <th>DESCRIPTION</th>
-                        <th>STATUS</th>
-                        <th style={{textAlign: "center"}}>ACTION</th>
-                    </tr>
-                    {isEmpty != true ? complaints.map((complaint) => {
-                        return (
-                            <tr className="complaint" key={complaint.key}>
-                                <td><img className="profilePic" src={personIcon} /> {complaint.officer}</td>
-                                <td style={{fontWeight: 'bolder'}}>{complaint.complaint_no}</td>
-                                <td style={{color: "#383f3f"}}>{complaint.date.toLocaleString(undefined, {year: 'numeric',month: 'long', day: 'numeric'})}</td>
-                                <td style={{fontSize: "15px"}}>{complaint.description}</td>
-                                <td>{complaint.status === "PENDING" ? <span className="status">{complaint.status}</span>: <span className="complete">{complaint.status}</span>}</td>
-                                <td className="actionClass">
-                                    <button onClick={() => {handleDelete(complaint.key)}}><img src={deleteIcon} /></button>
-                                    <button onClick={()=> {handleView(complaint.key)}}><img src={viewIcon} /></button>
-                                </td>
-                            </tr>
-                        )
-                    }): ""}
-                </table>
-                <dialog ref={dialogEditRef}>
-                    <h1 className="dialog-header">View Complaint</h1>
-                    <button onClick={handleClose} className="close-button">x</button>
-                    <div className="complaint-details">
-                        {
-                            isEmpty != true ? complaints.filter((complaint) => {
-                                return complaint.key === complaintId;
-                            }).map((complaint) => {
-                                return (
-                                    <Fragment key={complaintId}>
-                                        <p>Officer: {complaint.officer}</p>
-                                        <p>Complaint No: {complaint.complaint_no}</p>
-                                        <p>Date: {`${complaint.date.getFullYear()}-${(complaint.date.getMonth() + 1) < 9 ? "0" + (complaint.date.getMonth() + 1) : (complaint.date.getMonth() + 1) }-${complaint.date.getDate()}`}</p>
-                                        <p>Description: {complaint.description}</p>
-                                        <label for="select-officer">
-                                            Update Officer
-                                        </label>
-                                        <select onChange={(e) => {dispatch({type: "officer", value: e.target.value})}} id="select-officer">
-                                            <option>Bea N.</option>
-                                            <option>Osten D.</option>
-                                            <option>Bruno M.</option>
-                                        </select>
-                                        <label for="select-status">
-                                            Update Status
-                                        </label>
-                                        <select onChange={(e) => {dispatch({type: "status", value: e.target.value})}} id="select-status">
-                                            <option value="pending">Pending</option>
-                                            <option value="complete">Complete</option>
-                                        </select>
-                                    </Fragment>
-                                )
-                            })
-                            : ""
-                        }
-                    </div>
-                    <button onClick={handleUpdate} className="update-button">Update Status</button>
-                </dialog>
-                <dialog className="add-modal" ref={dialogAddRef}>
-                    <h1 className="dialog-header">Add Complaint</h1>
-                    <button onClick={handleClose} className="close-button-add">x</button>
-                    <p>Send your complaints here: </p>
-                    <textarea ref={inputComplaintRef} onChange={(e) => {handleComplaintInput(e.target.value)}}>
-
-                    </textarea>
-                    <div className="buttons-container">
-                        <button onClick={handleSubmitComplaint} className="add-current">Add</button>
-                        <button onClick={handleClose} className="cancel-current">Cancel</button>
-                    </div>
-                </dialog>
+                <ComplaintsHeader handleAddComplaint={handleAddComplaint} />
+                <ComplaintsTable isEmpty={isEmpty} complaints={complaints} handleDelete={handleDelete} handleView={handleView} />
+                <EditModal 
+                    dialogEditRef={dialogEditRef} handleClose={handleClose} complaints={complaints} 
+                    complaintId={complaintId} getMap={getMap} updateComplaints={updateComplaints} 
+                    dispatch={dispatch} handleUpdate={handleUpdate} 
+                />
+                <AddModal handleClose={handleClose} dialogAddRef={dialogAddRef} inputComplaintRef={inputComplaintRef} 
+                    handleComplaintInput={handleComplaintInput} handleSubmitComplaint= {handleSubmitComplaint} 
+                />
             </div>
         </div>
     )
