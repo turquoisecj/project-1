@@ -84,12 +84,12 @@ export function Complaints() {
             case "status": {
             
                 return currentState.map((complaint) => {
-                    return (complaintId === complaint.key ? {...complaint, status: action.value.toUpperCase(), hasChanged:true} : {...complaint});
+                    return (complaintId === complaint.key ? {...complaint, status: action.value.toUpperCase(), hasChangedStatus:true} : {...complaint});
                 })
             }
             case "officer": {
                 return currentState.map((complaint) => {
-                    return (complaintId === complaint.key ? {...complaint, officer: action.value, hasChanged:true} : {...complaint});
+                    return (complaintId === complaint.key ? {...complaint, officer: action.value, hasChangedOfficer:true} : {...complaint});
                 })
             }
             case "delete": {
@@ -103,12 +103,17 @@ export function Complaints() {
             case "add-from-empty": {
                 return [action.value];
             }
+            case "update-staging": {
+                return complaints.map((complaint) => {
+                    return (complaintId === complaint.key ? {...complaint, officer: action.nodes[1], status: action.nodes[0].toUpperCase(), hasChanged:false} : {...complaint});
+                })
+            }
         }
     }
 
     // proceed staged updates to a state that renders the final complaint data
     function handleUpdate() {
-        if(complaintUpdate[complaintId].hasChanged) {
+        if(complaintUpdate[complaintId].hasChangedOfficer && complaintUpdate[complaintId].hasChangedStatus) {
             setComplaints(complaintUpdate);
         }else {
             const mapStatus = getMap()[0];
@@ -119,6 +124,7 @@ export function Complaints() {
             setComplaints(complaints.map((complaint) => {
                 return (complaintId === complaint.key ? {...complaint, officer: nodeOfficer.value, status: nodeStatus.value.toUpperCase(), hasChanged:false} : {...complaint});
             }))
+            dispatch({type: "update-staging", nodes:[nodeStatus.value, nodeOfficer.value]});
         }
         inputComplaintRef.current.value = "";
         dialogEditRef.current.close();
