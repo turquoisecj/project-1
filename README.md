@@ -1,7 +1,3 @@
-Sure! Here's the updated README format with the note about using either Git Bash or GitHub Desktop for managing Git repositories:
-
----
-
 # Training Workshop Project: Police Reporting Ticketing System
 
 Welcome to our training workshop project! This project aims to enhance our skills as professional developers and prepare us to handle projects in professional settings. As we progress, we will grow our skillset and aim to become exceptional developers.
