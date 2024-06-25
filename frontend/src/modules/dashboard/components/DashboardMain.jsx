@@ -27,19 +27,19 @@ function DashboardComplaints() {
     return (
         <div className="complaints-container">
             <div>
-                <h2>Total Complaints</h2>
+                <h2 className="stat-header">Total Complaints</h2>
                 <div>
                     <span>25</span>complaints
                 </div>
             </div>
             <div>
-                <h2>Active Complaints</h2>
+                <h2 className="stat-header">Active Complaints</h2>
                 <div>
                     <span>10</span>complaints
                 </div>
             </div>
             <div>
-                <h2>Resolved Complaints</h2>
+                <h2 className="stat-header">Resolved Complaints</h2>
                 <div>
                     <span>15</span>complaints
                 </div>

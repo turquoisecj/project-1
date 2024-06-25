@@ -1,0 +1,35 @@
+.wrapper {
+    background-color: #dddddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-modal h1 {
+    font-family: arial;
+    color: #0e0000;
+}
+
+.login-modal {
+    background-color: white;
+}
+
+input {
+    display: block;
+    background-image: none;
+}
+
+@media only screen and (max-width: 426px) {
+    .login-modal h1{
+        color: red;
+    }
+
+    .login-modal {
+        width: calc(100% - 350px);
+        height: 70%;
+    }
+
+    .wrapper {
+        height: 800px;
+    }
+}

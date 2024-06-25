@@ -4,7 +4,7 @@ export function AddModal({handleClose, inputComplaintRef, handleComplaintInput, 
             <h1 className="dialog-header">Add Complaint</h1>
             <button onClick={handleClose} className="close-button-add">x</button>
             <p>Send your complaints here: </p>
-            <textarea ref={inputComplaintRef} onChange={(e) => {handleComplaintInput(e.target.value)}}>
+            <textarea className="add-description" ref={inputComplaintRef} onChange={(e) => {handleComplaintInput(e.target.value)}}>
         
             </textarea>
             <div className="buttons-container">
