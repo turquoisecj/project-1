@@ -1,0 +1,99 @@
+@media only screen and (max-width: 426px) {
+    div.register-modal {
+        width: 80%;
+    }
+    .login-prompt-container {
+        width: 80%;
+    }
+
+    div.register-bg {
+        background-color: #ddd;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    div.register-modal {
+        background-color: white;
+        text-align: center;
+        border-radius: 12px;
+        padding: 30px;
+    }
+    
+    div.register-modal h1.register-header {
+        font-size: 30px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 300;
+        margin: 25px 0;
+    }
+    
+    form.register-form {
+        text-align: left;
+    }
+    
+    label.label-input {
+        font-size: 15px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    select.account-type, .input-user, .input-password {
+        display: block;
+        width: 100%;
+        height: 35px;
+        font-size: 18px;
+        padding-left: 10px;
+        margin-top: 10px;
+    }
+    
+    select.account-type {
+        border: 2px solid gray;
+        border-radius: 7px;
+    }
+    
+    .input-user, .input-password {
+        border-radius: 15px;
+        background-color: #eaeaea;
+        border: none;
+        height: 38px;
+    }
+    
+    select.account-type option {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    form.register-form button {
+        display: block;
+        width: 100%;
+        margin: 20px auto;
+        height: 45px;
+        border-radius: 5px;
+        background-color: #111828;
+        color: white;
+    }
+    
+    .login-prompt-container {
+        display: block;
+        background-color: #111828;
+        color: rgb(209, 209, 209);
+        text-align: center;
+        padding: 30px;
+        border-radius: 12px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    .login-prompt-container button{
+        border: 3px solid white;
+        background-color: #111828;
+        color: rgb(209, 209, 209);
+        margin: 20px 0;
+        border-radius: 25px;
+        padding: 10px 25px;
+    }
+
+    .header-login-prompt {
+        margin: 0 0 15px 0;
+    }
+}
