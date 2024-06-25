@@ -7,7 +7,7 @@ export function Sidebar({ isActive, handleSelect, setIsActive}) {
 
     const [isExpanded, setIsExpanded] = useState(false);
 
-    const activeClass = isActive ? "option-complaints active" : "option-complaints";
+    const activeClass = isActive ? "option-complaints active list-option" : "option-complaints list-option";
 
     const menuOptionRef = useRef(null);
     const menuRef = useRef(null);
@@ -33,9 +33,9 @@ export function Sidebar({ isActive, handleSelect, setIsActive}) {
     return (
         <div className="sidebar">
             <h1 className='brand'><span className="brand-color">Safe</span>Trace</h1>
-            <ul>
+            <ul className="sidebar-list">
                 <Link to={'/'}>
-                    <li onClick={handleToggle} className='expandable-menu'><span ref={menuRef} className="menu-expand">&equiv;</span>Dashboard</li>
+                    <li onClick={handleToggle} className='expandable-menu list-option'><span ref={menuRef} className="menu-expand">&equiv;</span>Dashboard</li>
                 </Link>
                 <Link to={'dashboard/complaints'}>
                     <li ref={menuOptionRef} onClick={handleSelect} className={activeClass} >Complaints</li>

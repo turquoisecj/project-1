@@ -2,7 +2,7 @@ import { Fragment } from "react";
 
 export function EditModal({dialogEditRef, isEmpty,handleClose, complaints, complaintId, getMap, dispatch, handleUpdate}) {
     return (
-        <dialog ref={dialogEditRef}>
+        <dialog className="edit-modal" ref={dialogEditRef}>
             <h1 className="dialog-header">View Complaint</h1>
             <button onClick={handleClose} className="close-button">x</button>
             <div className="complaint-details">

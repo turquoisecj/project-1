@@ -24,14 +24,14 @@
     margin-bottom: 5px;
 }
 
-p {
+.desc-container p {
     color: #6f7583;
     font-family: sans-serif;
     margin: auto 0;
 }
 
 
-.complaints-desc {
+p.complaints-desc {
     color: #c8ccd3;
 }
 
@@ -64,7 +64,7 @@ p {
     vertical-align: middle;
 }
 
-h2 {
+h2.stat-header {
     color: #1d2635;
     margin: 10px 0;
     font-size: 22px;

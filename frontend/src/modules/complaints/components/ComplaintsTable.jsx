@@ -3,8 +3,8 @@ import viewIcon from "../../../assets/complaints/view-icon.png";
 import personIcon from "../../../assets/complaints/person-icon.png";
 
 export function ComplaintsTable({isEmpty, complaints,handleDelete, handleView}) {
-    return (<table>
-        <tr>
+    return (<table className="complaints-table">
+        <tr className="complaints-header-cells">
             <th>OFFICER</th>
             <th>COMPLAINT NO</th>
             <th>DATE</th>
@@ -21,8 +21,8 @@ export function ComplaintsTable({isEmpty, complaints,handleDelete, handleView}) 
                     <td style={{fontSize: "15px"}}>{complaint.description}</td>
                     <td>{complaint.status === "PENDING" ? <span className="status">{complaint.status}</span>: <span className="complete">{complaint.status}</span>}</td>
                     <td className="actionClass">
-                        <button onClick={() => {handleDelete(complaint.key)}}><img src={deleteIcon} /></button>
-                        <button onClick={()=> {handleView(complaint.key)}}><img src={viewIcon} /></button>
+                        <button className="action-buttons" onClick={() => {handleDelete(complaint.key)}}><img className="button-image" src={deleteIcon} /></button>
+                        <button className="action-buttons" onClick={()=> {handleView(complaint.key)}}><img className="button-image" src={viewIcon} /></button>
                     </td>
                 </tr>
             )
