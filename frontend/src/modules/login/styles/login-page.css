@@ -1,0 +1,94 @@
+@media only screen and (max-width: 426px) {
+    .login-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+        padding: 10px;
+    }
+    
+    .login-modal h1 {
+        font-family: arial;
+        color: #0e0000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .login-modal {
+        background-color: white;
+        padding: 10px;
+    }
+    
+    .password-input, .username-input {
+        display: block;
+        background-image: none;
+        border-radius: 15px;
+        padding: 5px;
+        width: 350px;
+        margin: 10px 0px 10px;
+    }
+    
+    .login-label {
+        font-size: 12px;
+    
+    }
+    
+    .login-button{
+        display: block;
+        background-color: #111828;
+        color: white;
+        background-image: none;
+        padding: 10px;
+        width: 350px;
+        font-size: 15px;
+    }
+    
+    .login-signup {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: #111828;
+        padding: 20px 40px 20px 40px;
+        color: white;
+        font-size: 15px;
+        margin-top: 30px;
+    }
+    
+    .login-h5{
+        text-align: center;
+        margin: 15px 0px 15px;
+        width: 325px;
+    }
+    
+    .login-signup-button{
+        display: block;
+        background-color: #111828;
+        border-radius: 25px;
+        color: white;
+        background-image: none;
+        padding: 20px 10px;
+        width: 325px;
+        border: 2px solid white; 
+        font-size: 15px;
+        margin: 10px 20px 10px;
+    }
+
+}
+
+@media only screen and (max-width: 321px) {
+    .login-signup-button{
+        width: 250px;
+    }
+
+    .login-button{
+        width: 250px;
+
+    }
+
+    .password-input, .username-input {
+        width: 250px;
+    }
+}

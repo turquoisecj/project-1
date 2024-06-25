@@ -9,7 +9,7 @@ import { LoginPage } from './modules/login/page/LoginPage.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Dashboard />,
+    element: <LoginPage />,
     children: [
       {
         path:"dashboard/complaints",
